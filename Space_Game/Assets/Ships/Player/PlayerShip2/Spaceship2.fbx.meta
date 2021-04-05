@@ -1,9 +1,44 @@
 fileFormatVersion: 2
-guid: 1e3f2bccba8e2c3429b7da1607ad6d7c
+guid: a86438524f46d8d4b8ffdfdf7c34f8f0
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AccessoryColours
+    second: {fileID: 2100000, guid: ef24a5fb7364fbe4089958450fc18954, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AccessoryLights
+    second: {fileID: 2100000, guid: b991e83ab0b51b04a9019eb5a1c0398b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Engines
+    second: {fileID: 2100000, guid: 3559e334ad990864b9f33d6a08367cc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrontLights
+    second: {fileID: 2100000, guid: a5f95127acedeb847823abd893f58eb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 754f0bff1e5c92446b604048b4b15c96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: a5e26d28c4b306a489c5755aef6a059d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TailLights
+    second: {fileID: 2100000, guid: 445e44b0d27297b4389f1fe4de0a9597, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
