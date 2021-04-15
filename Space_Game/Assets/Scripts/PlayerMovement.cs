@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Ship movement
-        horizontalMovement = Input.GetAxis("Horizontal") * 20;
-        verticalMovement = Input.GetAxis("Vertical") * 20;
+        horizontalMovement = Input.GetAxis("Horizontal") * 15;
+        verticalMovement = Input.GetAxis("Vertical") * 15;
         GetComponent<Rigidbody>().velocity = new Vector3(horizontalMovement, verticalMovement, 0);
 
         // Rotate Ship slightly when moving up / down, doesn't work
