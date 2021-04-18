@@ -104,7 +104,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.05
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -113,7 +113,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.12499958
+        value: 0.13749886
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -122,7 +122,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.0625
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -167,7 +167,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.05
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1 &775401702021388045
@@ -197,8 +197,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775401702021388045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3453, y: 0.3453, z: 0.3453}
+  m_LocalPosition: {x: -0.0666, y: 0.0666, z: 0}
+  m_LocalScale: {x: 0.21211779, y: 0.21211779, z: 0.21211779}
   m_Children: []
   m_Father: {fileID: 1638609572231819339}
   m_RootOrder: 0
