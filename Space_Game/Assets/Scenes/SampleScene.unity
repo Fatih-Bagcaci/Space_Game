@@ -259,7 +259,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.06
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -268,7 +268,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5875
+        value: 0.5749992
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -276,8 +276,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
-        value: 0.21665905
+        time: 0.7512512
+        value: 0.20415753
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -322,7 +322,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.06
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!65 &508367300
@@ -923,7 +923,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 88
   m_CollisionDetection: 0
 --- !u!96 &1740596414
 TrailRenderer:
@@ -1045,8 +1045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7dce0c32f9df442a59b70ea0cf0ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMovement: 0
-  verticalMovement: 0
 --- !u!1001 &696647494849046955
 PrefabInstance:
   m_ObjectHideFlags: 0
