@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
         {
             Rigidbody projectileInstance;
             projectileInstance = Instantiate(projectile, barrelEnd.position, barrelEnd.rotation);
-            projectileInstance.AddForce(2000f,0,0);
+            projectileInstance.AddForce(1500f,0,0);
         }
     }
 }
