@@ -4,33 +4,47 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float horizontalMovement;
-    public float verticalMovement;
+    private float horizontalMovement;
+    private float verticalMovement;
+    float speed = 10;
     float smooth = 5.0f;
-    float tiltAngle = 60.0f;
-
-    void Start()
-    {
-        
-    }
+    float tiltAngle = 30f;
 
     void Update()
     {
-        // Ship movement
-        horizontalMovement = Input.GetAxis("Horizontal") * 20;
-        verticalMovement = Input.GetAxis("Vertical") * 20;
-        GetComponent<Rigidbody>().velocity = new Vector3(horizontalMovement, verticalMovement, 0);
+            GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
 
-        // Rotate Ship slightly when moving up / down, doesn't work
-        /*if ((verticalMovement > 0) || (verticalMovement < 0))
+            // Ship movement if both right and left keys are pressed
+            if (Input.GetKey(KeyCode.RightArrow) == true && Input.GetKey(KeyCode.LeftArrow) == true)
+            {
+                horizontalMovement = 0;
+            }
+            else
+            {
+                horizontalMovement = Input.GetAxisRaw("Horizontal");
+            }
+            // Ship movement if both up and down keys are pressed
+            if (Input.GetKey(KeyCode.UpArrow) == true && Input.GetKey(KeyCode.DownArrow) == true)
+            {
+                verticalMovement = 0;
+            }
+            else
+            {
+                verticalMovement = Input.GetAxisRaw("Vertical");
+            }
+
+            Vector3 Direction = new Vector3(verticalMovement, horizontalMovement, 0) * Time.deltaTime * 15;
+            transform.Translate(Direction);
+        //Ship Rotation
+        /*
+        float tiltAroundX = tiltAngle * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.UpArrow) == true && ((transform.eulerAngles.x <= 1) || (transform.eulerAngles.x >= -30))){
+            transform.Rotate(0, tiltAroundX, 0);
+        }else if (Input.GetKey(KeyCode.DownArrow) == true && ((transform.eulerAngles.x >= 1) || (transform.eulerAngles.x <= 30)))
         {
-            float tiltAroundX = Input.GetAxis("Horizontal") * tiltAngle;
-            Quaternion target = Quaternion.Euler(tiltAroundX, 0, 0);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-        }
-        else if(verticalMovement == 0)
-        {
-            transform.Rotate(0, 0, 0, Space.Self);
+            transform.Rotate(0, -tiltAroundX, 0);
         }*/
     }
 }
