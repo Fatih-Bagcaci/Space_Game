@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class ShipTrail : MonoBehaviour
 {
-    //public KeyCode RightKey = KeyCode.RightArrow;
-    //public KeyCode DKey = KeyCode.RightArrow;
     TrailRenderer Trail;
-    
-
+   
     void Start()
     {
         Trail = gameObject.GetComponent<TrailRenderer>();
@@ -16,7 +13,7 @@ public class ShipTrail : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow) == true || Input.GetKey(KeyCode.D) == true)
+        if (Input.GetAxisRaw("Horizontal") > 0)
         {
             Trail.enabled = true;
         }

@@ -6,9 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontalMovement;
     private float verticalMovement;
-    float speed = 10;
-    float smooth = 5.0f;
-    float tiltAngle = 30f;
+    //float speed = 10;
+    //float smooth = 5.0f;
+    //float tiltAngle = 30f;
 
     void Update()
     {
@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 Direction = new Vector3(verticalMovement, horizontalMovement, 0) * Time.deltaTime * 15;
             transform.Translate(Direction);
+        
         //Ship Rotation
         /*
         float tiltAroundX = tiltAngle * Time.deltaTime;

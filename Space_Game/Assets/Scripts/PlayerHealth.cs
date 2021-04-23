@@ -4,26 +4,41 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private int health = 3;
+    private int health;
     private int healthMax = 3;
-    public Rigidbody projectile;
-    public Rigidbody player;
+    private bool invincibility = false;
+    public float invincibleTimeStart = 5;
+    public float invincibleTime;
+
+    private void Start()
+    {
+        health = healthMax;
+    }
 
     private void Update()
     {
-        //Debug.Log("Damage" + health);
+        if (Input.GetKeyDown("h"))
+        {
+            spaceshipHeal(3);
+        }
+
+        //if the player is temporarily invincible or not
+        if (invincibleTime > 0 && invincibility == true)
+        {
+            invincibleTime -= Time.deltaTime;
+        }
+        else
+        {
+            invincibility = false;
+            invincibleTime = invincibleTimeStart;
+        }
     }
 
-    /*public void healthSystem(int healthMax)
-    {
-        this.healthMax = healthMax;
-        health = healthMax;
-    }*/
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.name == "Bullet(Clone)" && health > 0)
+        if(col.gameObject.tag == "projectile" && health > 0 && invincibility == false)
         {
-            Damage(1);
+            receiveSpaceshipDamage(1);
         }
     }
  
@@ -31,24 +46,26 @@ public class PlayerHealth : MonoBehaviour
     {
         return health;
     }
-    
-    public void Damage(int damageAmount)
+
+    private void receiveSpaceshipDamage(int damageAmount)
     {
         health -= damageAmount;
-        Debug.Log("Damage" + health);
+        invincibility = true;
+        
+        Debug.Log("Health Remaining: " + health + "/3");
+        
         if (health == 0)
         {
             Debug.Log("Health = 0");
         }
     }
-    /*public void Heal(int healAmount)
+    private void spaceshipHeal(int healAmount)
     {
-        healAmount = 1;
         health += healAmount;
         if (health >= healthMax)
         {
             health = healthMax;
         }
-    }*/
+    }
 
 }
