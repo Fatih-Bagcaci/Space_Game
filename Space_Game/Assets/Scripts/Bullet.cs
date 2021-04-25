@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody projectile;
-    public Transform barrelEnd;
+    public Transform ShipFrontEnd;
 
     void Update()
     {
@@ -13,8 +13,8 @@ public class Bullet : MonoBehaviour
         if (Input.GetKeyDown("z"))
         {
             Rigidbody projectileInstance;
-            projectileInstance = Instantiate(projectile, barrelEnd.position, barrelEnd.rotation);
-            projectileInstance.AddForce(1500f,0,0);
+            projectileInstance = Instantiate(projectile, ShipFrontEnd.position, ShipFrontEnd.rotation);
+            projectileInstance.AddForce(2000f,0,0);
         }
     }
 }
