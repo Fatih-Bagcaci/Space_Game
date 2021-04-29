@@ -4,21 +4,44 @@ using UnityEngine;
 
 public class ShipTrail : MonoBehaviour
 {
-    TrailRenderer Trail;
+    TrailRenderer shipTrail;
+    LineRenderer shipLine;
    
     void Start()
     {
-        Trail = gameObject.GetComponent<TrailRenderer>();
+        if (gameObject.GetComponent<TrailRenderer>() != null) {
+            shipTrail = gameObject.GetComponent<TrailRenderer>();
+        }
+        if (gameObject.GetComponent<LineRenderer>() != null)
+        {
+            shipLine = gameObject.GetComponent<LineRenderer>();
+        }
     }
 
     void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        if (gameObject.GetComponent<TrailRenderer>() != null)
         {
-            Trail.enabled = true;
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                shipTrail.enabled = true;
+            }
+            else
+            {
+                shipTrail.enabled = false;
+            }
         }
-        else{
-            Trail.enabled = false;
+
+        if (gameObject.GetComponent<LineRenderer>() != null)
+        {
+            if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                shipLine.enabled = false;
+            }
+            else
+            {
+                shipLine.enabled = true;
+            }
         }
     }
 }
