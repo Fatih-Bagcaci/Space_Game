@@ -33,7 +33,6 @@ public class PlayerHealth : MonoBehaviour
             invincibleTime = invincibleTimeStart;
         }
     }
-
     private void OnCollisionEnter(Collision col)
     {
         if(col.gameObject.tag == "projectile" && health > 0 && invincibility == false)
@@ -41,12 +40,10 @@ public class PlayerHealth : MonoBehaviour
             receiveSpaceshipDamage(1);
         }
     }
- 
     public int getHealth()
     {
         return health;
     }
-
     private void receiveSpaceshipDamage(int damageAmount)
     {
         health -= damageAmount;
