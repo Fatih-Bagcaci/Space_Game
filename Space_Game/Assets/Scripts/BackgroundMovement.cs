@@ -4,39 +4,63 @@ using UnityEngine;
 
 public class BackgroundMovement : MonoBehaviour
 {
-    public GameObject backgroundImage;
-    public Transform backgroundSpawnPoint;
-    public GameObject backgroundCopy;
-    private bool isBackgroundThere = false;
-    private float timeCounter = 0;
+    public GameObject backgroundImage1;
+    public GameObject backgroundImage2;
+    public GameObject backgroundImage3;
+    public GameObject backgroundImage4;
+    public GameObject visualBackground1;
+    public GameObject visualBackground2;
+    public Transform background1SpawnPoint;
+    public Transform background2SpawnPoint;
+    private bool backgroundFromStart = true;
+    private bool shouldBackground1Spawn = true;
+    private bool shouldBackground2Spawn = true;
 
+    void Start()
+    {
+        visualBackground1 = Instantiate(randomBackground(), background1SpawnPoint.position, background1SpawnPoint.rotation);
+        visualBackground2 = Instantiate(randomBackground(), background2SpawnPoint.position, background2SpawnPoint.rotation);
+    }
     void Update()
     {
-        //Moves CanvasBackground to the side
-        transform.Translate(-1f* Time.deltaTime, 0,0);
-
-        if (transform.localPosition.x < -990 && isBackgroundThere == false)
+        if (visualBackground2.transform.localPosition.x < background1SpawnPoint.position.x && shouldBackground1Spawn == true)
         {
-            isBackgroundThere = true;
-            backgroundCopy = Instantiate(backgroundImage, backgroundSpawnPoint.position, backgroundSpawnPoint.rotation);
-            backgroundCopy.transform.Translate(-1f * Time.deltaTime, 0, 0);
-            timeCounter = 0;
-        }
-        timeCounter += Time.deltaTime;
-        Debug.Log(timeCounter);
-
-        if (transform.localPosition.x < -1021)
-        {
-            transform.localPosition = new Vector3(-953f, -407.03f, 285.319f);
+            Destroy(visualBackground1);
+            visualBackground1 = Instantiate(randomBackground(), background2SpawnPoint.position, background2SpawnPoint.rotation);
+            backgroundFromStart = false;
+            shouldBackground1Spawn = false;
+            shouldBackground2Spawn = true;
         }
         
-        if (timeCounter > 68f)
+        if (visualBackground1.transform.localPosition.x < background1SpawnPoint.position.x && backgroundFromStart == false && shouldBackground2Spawn == true)
         {
-            Destroy(backgroundCopy);
-            isBackgroundThere = false;
-            timeCounter = 0;
+            Destroy(visualBackground2);
+            visualBackground2 = Instantiate(randomBackground(), background2SpawnPoint.position, background2SpawnPoint.rotation);
+            shouldBackground1Spawn = true;
+            shouldBackground2Spawn = false;
         }
-
-
+        
+        visualBackground1.transform.Translate(-0.5f * Time.deltaTime, 0, 0);
+        visualBackground2.transform.Translate(-0.5f * Time.deltaTime, 0, 0);
     }
+
+    private GameObject randomBackground()
+    {
+        int backgroundNumber = Random.Range(1, 4);
+        switch (backgroundNumber)
+        {
+            case 1:
+                return backgroundImage1;
+            case 2:
+                return backgroundImage2;
+            case 3:
+                return backgroundImage3;
+            case 4:
+                return backgroundImage4;
+            default:
+                return backgroundImage1;
+        }
+        
+    }
+
 }

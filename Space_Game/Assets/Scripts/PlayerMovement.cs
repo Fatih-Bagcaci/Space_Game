@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             verticalMovement = Input.GetAxisRaw("Vertical");
         }
 
-        Vector3 Direction = new Vector3(verticalMovement, horizontalMovement, 0) * Time.deltaTime * 15;
+        Vector3 Direction = new Vector3(verticalMovement, horizontalMovement, 0) * Time.deltaTime * 7;
         transform.Translate(Direction);
 
         //Z remains the same
