@@ -4,9 +4,26 @@ using UnityEngine;
 
 public class Destruction : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Bullet destroyed after x seconds
     void Start()
     {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 3f);
     }
+
+    //Bullet destroyed on impact
+    private void OnCollisionEnter(Collision col)
+    {
+        var tagName = col.gameObject.tag;
+
+        if (tagName == "spaceship")
+        {
+            Destroy(gameObject);
+        }
+        if (tagName == "projectile")
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+
 }

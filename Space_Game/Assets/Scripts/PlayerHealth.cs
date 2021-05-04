@@ -4,51 +4,65 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private int health = 3;
+    private int health;
     private int healthMax = 3;
-    public Rigidbody projectile;
-    public Rigidbody player;
+    private bool invincibility = false;
+    public float invincibleTimeStart = 5;
+    public float invincibleTime;
+
+    private void Start()
+    {
+        health = healthMax;
+    }
 
     private void Update()
     {
-        //Debug.Log("Damage" + health);
-    }
-
-    /*public void healthSystem(int healthMax)
-    {
-        this.healthMax = healthMax;
-        health = healthMax;
-    }*/
-    private void OnCollisionEnter(Collision col)
-    {
-        if(col.gameObject.name == "Bullet(Clone)" && health > 0)
+        if (Input.GetKeyDown("h"))
         {
-            Damage(1);
+            spaceshipHeal(3);
+        }
+
+        //if the player is temporarily invincible or not
+        if (invincibleTime > 0 && invincibility == true)
+        {
+            invincibleTime -= Time.deltaTime;
+        }
+        else
+        {
+            invincibility = false;
+            invincibleTime = invincibleTimeStart;
         }
     }
- 
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "projectile" && health > 0 && invincibility == false)
+        {
+            receiveSpaceshipDamage(1);
+        }
+    }
     public int getHealth()
     {
         return health;
     }
-    
-    public void Damage(int damageAmount)
+    private void receiveSpaceshipDamage(int damageAmount)
     {
         health -= damageAmount;
-        Debug.Log("Damage" + health);
+        invincibility = true;
+        
+        Debug.Log("Health Remaining: " + health + "/3");
+        
         if (health == 0)
         {
             Debug.Log("Health = 0");
         }
     }
-    /*public void Heal(int healAmount)
+    private void spaceshipHeal(int healAmount)
     {
-        healAmount = 1;
         health += healAmount;
         if (health >= healthMax)
         {
             health = healthMax;
         }
-    }*/
+    }
 
 }
