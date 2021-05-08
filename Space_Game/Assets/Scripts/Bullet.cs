@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody projectile;
     public Transform ShipFrontEnd;
+    float timeCheck = 0;
 
     void Update()
     {
@@ -15,6 +16,19 @@ public class Bullet : MonoBehaviour
             Rigidbody projectileInstance;
             projectileInstance = Instantiate(projectile, ShipFrontEnd.position, ShipFrontEnd.rotation);
             projectileInstance.AddForce(1000f,0,0);
+            timeCheck = 0;
+        }
+        
+        if (Input.GetKey("z"))
+        {
+            timeCheck += 1f;
+            Debug.Log(timeCheck);
+            if (timeCheck > 80) {
+                Rigidbody projectileInstance;
+                projectileInstance = Instantiate(projectile, ShipFrontEnd.position, ShipFrontEnd.rotation);
+                projectileInstance.AddForce(1000f, 0, 0);
+                timeCheck = 0;
+            }
         }
     }
 }

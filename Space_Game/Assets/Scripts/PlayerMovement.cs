@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalMovement;
     private float verticalMovement;
     float tiltAngle = 80f;
+    private float playerSpeed = 5;
 
     Vector3 CurrentEuler;
 
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
             verticalMovement = Input.GetAxisRaw("Vertical");
         }
 
-        Vector3 Direction = new Vector3(verticalMovement, horizontalMovement, 0) * Time.deltaTime * 7;
+        Vector3 Direction = new Vector3(verticalMovement, horizontalMovement, 0) * Time.deltaTime * playerSpeed;
         transform.Translate(Direction);
 
         //Z remains the same
