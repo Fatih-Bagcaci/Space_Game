@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalMovement;
     private float verticalMovement;
     float tiltAngle = 80f;
-    private float playerSpeed = 5;
+    private float playerSpeed = 4;
 
     Vector3 CurrentEuler;
 
