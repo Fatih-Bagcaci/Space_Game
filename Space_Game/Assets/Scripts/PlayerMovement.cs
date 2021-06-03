@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalMovement;
     private float verticalMovement;
     float tiltAngle = 80f;
+    private float playerSpeed = 5;
 
     Vector3 CurrentEuler;
 
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            horizontalMovement = Input.GetAxisRaw("Horizontal");
+            horizontalMovement = -Input.GetAxisRaw("Horizontal");
         }
         // Ship movement if both up and down keys are pressed
         if (Input.GetKey(KeyCode.UpArrow) == true && Input.GetKey(KeyCode.DownArrow) == true)
@@ -38,29 +39,38 @@ public class PlayerMovement : MonoBehaviour
             verticalMovement = Input.GetAxisRaw("Vertical");
         }
 
-        Vector3 Direction = new Vector3(verticalMovement, horizontalMovement, 0) * Time.deltaTime * 7;
+        Vector3 Direction = new Vector3(horizontalMovement, verticalMovement, 0) * Time.deltaTime * playerSpeed;
         transform.Translate(Direction);
 
         //Z remains the same
         transform.position = new Vector3(transform.position.x, transform.position.y, 276);
 
-
+        
         //Ship Rotation
-        float tiltAroundX = tiltAngle * Time.deltaTime;
+        float tiltAroundX = tiltAngle * Time.deltaTime * 0.1f;
         bool clickUp = Input.GetKey(KeyCode.UpArrow);
         bool clickDown = Input.GetKey(KeyCode.DownArrow);
         float playersXRotationAngle = transform.localRotation.eulerAngles.x;
 
         if (clickDown == clickUp)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 90);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        else if (clickUp == true && (((playersXRotationAngle <= 360) && (playersXRotationAngle >= 330)) || playersXRotationAngle == 0)) {
-            transform.Rotate(0, tiltAroundX, 0, Space.Self);
-        }
-        else if (clickDown == true && ((playersXRotationAngle >= 0) && (playersXRotationAngle <= 30)))
+        else if (clickUp == true && ((playersXRotationAngle <= 360) && (playersXRotationAngle >= 340)) || playersXRotationAngle == 0)
         {
-            transform.Rotate(0, -tiltAroundX, 0, Space.Self);
+            transform.Rotate(-tiltAroundX, 0, 0, Space.Self);
+        }
+        else if (clickDown == true && ((playersXRotationAngle >= 0) && (playersXRotationAngle <= 20)))
+        {
+            transform.Rotate(tiltAroundX, 0, 0, Space.Self);
+        }
+        else if (clickUp == false && ((playersXRotationAngle <= 360) && (playersXRotationAngle >= 340)))
+        {
+            transform.Rotate(tiltAroundX, 0, 0, Space.Self);
+        }
+        else if (clickDown == false && ((playersXRotationAngle >= 0) && (playersXRotationAngle <= 20)))
+        {
+            transform.Rotate(-tiltAroundX, 0, 0, Space.Self);
         }
     }
 }
