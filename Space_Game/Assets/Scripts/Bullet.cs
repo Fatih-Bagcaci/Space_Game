@@ -11,22 +11,22 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         //If you click "Z", the bullet will have a force in the +ve x direction
-        if (Input.GetKeyDown("z"))
+        if (Input.GetKeyDown("z") & Time.timeScale != 0f)
         {
             Rigidbody projectileInstance;
             projectileInstance = Instantiate(projectile, ShipFrontEnd.position, ShipFrontEnd.rotation);
-            projectileInstance.AddForce(1000f,0,0);
+            projectileInstance.AddForce(700f,0,0);
             timeCheck = 0;
         }
         
-        if (Input.GetKey("z"))
+        if (Input.GetKey("z") & Time.timeScale != 0f)
         {
             timeCheck += 1f;
             Debug.Log(timeCheck);
             if (timeCheck > 80) {
                 Rigidbody projectileInstance;
                 projectileInstance = Instantiate(projectile, ShipFrontEnd.position, ShipFrontEnd.rotation);
-                projectileInstance.AddForce(1000f, 0, 0);
+                projectileInstance.AddForce(700f, 0, 0);
                 timeCheck = 0;
             }
         }
