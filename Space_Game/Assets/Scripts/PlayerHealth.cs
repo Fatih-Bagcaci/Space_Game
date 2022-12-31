@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private bool invincibility = false;
     public float invincibleTimeStart = 5;
     public float invincibleTime;
+    public Slider healthSlider;
 
     private void Start()
     {
@@ -32,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
             invincibility = false;
             invincibleTime = invincibleTimeStart;
         }
+        SetHealth(health);
     }
     private void OnCollisionEnter(Collision col)
     {
@@ -63,6 +66,10 @@ public class PlayerHealth : MonoBehaviour
         {
             health = healthMax;
         }
+    }
+    public void SetHealth(float HealthValue)
+    {
+        healthSlider.value = HealthValue;
     }
 
 }

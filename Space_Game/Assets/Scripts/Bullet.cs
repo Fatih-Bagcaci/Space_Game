@@ -10,11 +10,12 @@ public class Bullet : MonoBehaviour
     float autoShootCounter = 0;
     float overHeatCounter = 0;
     bool zHasShot = false;
-    public Slider slider;
+    public Slider overheatSlider;
+    public Gradient sliderGradiant;
+    public Image sliderFill;
 
     void Update()
     {
-        Debug.Log(overHeatCounter);
         if (zHasShot == false) {
             //If you click "Z", the bullet will have a force in the +ve x direction
             if (Input.GetKeyDown("z") & Time.timeScale != 0f) {
@@ -58,6 +59,13 @@ public class Bullet : MonoBehaviour
     }
     public void SetOverheat (float overheatValue)
     {
-        slider.value = overheatValue;
+        overheatSlider.value = overheatValue;
+        sliderFill.color = sliderGradiant.Evaluate(overheatValue/100f);
+        Debug.Log(overheatValue);
+
+        /*if (overheatValue <= 50)
+        {
+            sliderFill.color = sliderGradiant.Evaluate(0f);
+        }*/
     }
 }
