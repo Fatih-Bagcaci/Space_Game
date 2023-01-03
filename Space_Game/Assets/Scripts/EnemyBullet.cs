@@ -15,7 +15,7 @@ public class EnemyBullet : MonoBehaviour
         {
             Rigidbody projectileInstance;
             projectileInstance = Instantiate(enemyProjectile, enemyShipFrontEnd.position, enemyShipFrontEnd.rotation);
-            projectileInstance.AddForce(-2000f, 0, 0);
+            projectileInstance.AddForce(-200f, 0, 0);
         }
     }
 }

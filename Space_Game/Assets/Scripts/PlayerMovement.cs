@@ -20,12 +20,20 @@ public class PlayerMovement : MonoBehaviour
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
 
-        // Ship movement if both right and left keys are pressed
+        //Debug.Log(transform.position.z);
+
+
+        // Ship movement if both right and left keys are pressed, or if the x position is within a certain limit
         if (Input.GetKey(KeyCode.RightArrow) == true && Input.GetKey(KeyCode.LeftArrow) == true)
         {
             horizontalMovement = 0;
-        }
-        else
+        }else if (transform.position.x > -20.4 && Input.GetKey(KeyCode.LeftArrow) == false)
+        {
+            horizontalMovement = 0;
+        }else if (transform.position.x < -34 && Input.GetKey(KeyCode.RightArrow) == false)
+        {
+            horizontalMovement = 0;
+        }else
         {
             horizontalMovement = -Input.GetAxisRaw("Horizontal");
         }
@@ -33,8 +41,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) == true && Input.GetKey(KeyCode.DownArrow) == true)
         {
             verticalMovement = 0;
-        }
-        else
+        }else if (transform.position.y > 136.4 && Input.GetKey(KeyCode.DownArrow) == false)
+        {
+            verticalMovement = 0;
+        }else if (transform.position.y < 128.8 && Input.GetKey(KeyCode.UpArrow) == false)
+        {
+            verticalMovement = 0;
+        }else
         {
             verticalMovement = Input.GetAxisRaw("Vertical");
         }
@@ -45,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
         //Z remains the same
         transform.position = new Vector3(transform.position.x, transform.position.y, 276);
 
-        
         //Ship Rotation
         float tiltAroundX = tiltAngle * Time.deltaTime * 0.1f;
         bool clickUp = Input.GetKey(KeyCode.UpArrow);

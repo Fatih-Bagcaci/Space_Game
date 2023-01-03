@@ -7,7 +7,9 @@ public class Destruction : MonoBehaviour
     //Bullet destroyed after x seconds
     void Start()
     {
-        Destroy(gameObject, 3f);
+        if (gameObject.tag == "projectile") {
+            Destroy(gameObject, 3f);
+        }
     }
 
     //Bullet destroyed on impact
@@ -15,11 +17,7 @@ public class Destruction : MonoBehaviour
     {
         var tagName = col.gameObject.tag;
 
-        if (tagName == "spaceship")
-        {
-            Destroy(gameObject);
-        }
-        if (tagName == "projectile")
+        if (tagName == "spaceship" || tagName == "projectile" || gameObject.tag == "projectile")
         {
             Destroy(gameObject);
         }

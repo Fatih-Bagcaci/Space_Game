@@ -19,10 +19,14 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("h"))
+        /*if (Input.GetKeyDown("h"))
         {
             spaceshipHeal(3);
         }
+        if (Input.GetKeyDown("j"))
+        {
+            receiveSpaceshipDamage(1);
+        }*/
 
         //if the player is temporarily invincible or not
         if (invincibleTime > 0 && invincibility == true)
@@ -38,10 +42,11 @@ public class PlayerHealth : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "projectile" && health > 0 && invincibility == false)
+        if(health > 0 && invincibility == false)
         {
             receiveSpaceshipDamage(1);
         }
+        Debug.Log("HIT");
     }
     public int getHealth()
     {

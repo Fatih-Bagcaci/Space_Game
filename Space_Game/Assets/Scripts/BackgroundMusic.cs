@@ -16,7 +16,7 @@ public class BackgroundMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(musicVolume);
+        //Debug.Log(musicVolume);
 
         if (Time.timeScale == 0f)
         {

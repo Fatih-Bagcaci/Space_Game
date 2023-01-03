@@ -61,7 +61,7 @@ public class Bullet : MonoBehaviour
     {
         overheatSlider.value = overheatValue;
         sliderFill.color = sliderGradiant.Evaluate(overheatValue/100f);
-        Debug.Log(overheatValue);
+        //Debug.Log(overheatValue);
 
         /*if (overheatValue <= 50)
         {
