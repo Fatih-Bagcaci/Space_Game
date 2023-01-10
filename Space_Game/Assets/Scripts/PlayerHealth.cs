@@ -19,15 +19,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        /*if (Input.GetKeyDown("h"))
-        {
-            spaceshipHeal(3);
-        }
-        if (Input.GetKeyDown("j"))
-        {
-            receiveSpaceshipDamage(1);
-        }*/
-
         //if the player is temporarily invincible or not
         if (invincibleTime > 0 && invincibility == true)
         {
@@ -46,7 +37,6 @@ public class PlayerHealth : MonoBehaviour
         {
             receiveSpaceshipDamage(1);
         }
-        Debug.Log("HIT");
     }
     public int getHealth()
     {

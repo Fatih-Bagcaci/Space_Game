@@ -19,21 +19,13 @@ public class Bullet : MonoBehaviour
         if (zHasShot == false) {
             //If you click "Z", the bullet will have a force in the +ve x direction
             if (Input.GetKeyDown("z") & Time.timeScale != 0f) {
-                Rigidbody projectileInstance;
-                projectileInstance = Instantiate(projectile, ShipFrontEnd.position, ShipFrontEnd.rotation);
-                projectileInstance.AddForce(700f, 0, 0);
-                autoShootCounter = 0;
-                overHeatCounter += 10;
+                PlayerShoots();
             }
-
+            //If you click "Z", the bullet will have a force in the +ve x direction automatically, but only if aSC is >150
             if (Input.GetKey("z") & Time.timeScale != 0f) {
                 autoShootCounter += 1f;
                 if (autoShootCounter > 150) {
-                    Rigidbody projectileInstance;
-                    projectileInstance = Instantiate(projectile, ShipFrontEnd.position, ShipFrontEnd.rotation);
-                    projectileInstance.AddForce(700f, 0, 0);
-                    autoShootCounter = 0;
-                    overHeatCounter += 10;
+                    PlayerShoots();
                 }
             }
         }
@@ -61,11 +53,14 @@ public class Bullet : MonoBehaviour
     {
         overheatSlider.value = overheatValue;
         sliderFill.color = sliderGradiant.Evaluate(overheatValue/100f);
-        //Debug.Log(overheatValue);
+    }
 
-        /*if (overheatValue <= 50)
-        {
-            sliderFill.color = sliderGradiant.Evaluate(0f);
-        }*/
+    public void PlayerShoots()
+    {
+        Rigidbody projectileInstance;
+        projectileInstance = Instantiate(projectile, ShipFrontEnd.position, ShipFrontEnd.rotation);
+        projectileInstance.AddForce(700f, 0, 0);
+        autoShootCounter = 0;
+        overHeatCounter += 10;
     }
 }

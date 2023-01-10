@@ -8,7 +8,7 @@ public class enemyAI : MonoBehaviour
     private float enemyVerMovement=0;
     private float enemySpeed = 1f;
     private float movementCooldownY = 0f;
-    private float movementCooldownX = 0f;
+    //private float movementCooldownX = 0f;
     public Rigidbody projectile;
     public GameObject enemyShip;
     public Transform EnemyFrontEnd;
@@ -16,9 +16,7 @@ public class enemyAI : MonoBehaviour
     private float shootingTime = 5f;
 
     Vector3 CurrentEuler;
-    private void Start()
-    {
-    }
+
     private void Update()
     {
         //X movement for enemies
@@ -69,18 +67,8 @@ public class enemyAI : MonoBehaviour
     }
     void enemyShoot()
     {
-        //if () {
             Rigidbody projectileInstance;
             projectileInstance = Instantiate(projectile, EnemyFrontEnd.position, EnemyFrontEnd.rotation);
             projectileInstance.AddForce(-200f, 0, 0);
-        //}
     }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag.Equals("projectile"))
-        {
-            Score.scoreValue += 1;
-        }
-    }
-    }
+}

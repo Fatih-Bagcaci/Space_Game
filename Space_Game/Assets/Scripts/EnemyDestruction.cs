@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destruction : MonoBehaviour
+public class EnemyDestruction : MonoBehaviour
 {
-    //Bullet destroyed after x seconds
+    // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.tag == "projectile") {
-            Destroy(gameObject, 3f);
-        }
+        
     }
 
-    //Destroyed on impact
+    // Update is called once per frame
     private void OnCollisionEnter(Collision col)
     {
         var tagName = col.gameObject.tag;
@@ -20,11 +18,6 @@ public class Destruction : MonoBehaviour
         if (tagName == "spaceship" || tagName == "projectile" || gameObject.tag == "projectile")
         {
             Destroy(gameObject);
-            if (gameObject.tag == "Enemy")
-            {
-                Score.scoreValue += 1;
-            }
-
         }
     }
 }

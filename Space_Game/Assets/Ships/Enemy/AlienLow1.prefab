@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3394736273967462802}
   - component: {fileID: 6542899425479566594}
   - component: {fileID: 8493124722744458186}
+  - component: {fileID: 5488294064447185364}
   m_Layer: 7
-  m_Name: AlienShipSimple
-  m_TagString: Untagged
+  m_Name: AlienLow1
+  m_TagString: Enemy
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,6 +61,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8e84222f0fbed24b841a259ea4116be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5488294064447185364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667064033582695667}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6e39713a3c8b34198cf9d0ecda297b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5564425286642616297
@@ -134,23 +147,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0038808144, y: 0.0031156498, z: 0.0011260222}
   m_Center: {x: 4.516216e-11, y: 0.00018942384, z: 0.00022471954}
---- !u!114 &2413024297292044570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7646359559761451687}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e124b4a93fd13b542bc9d572c6a69990, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 4152409760857559900, guid: a90f90332dc06ca4992591073b5c3edb,
-    type: 3}
-  enemyShip: {fileID: 0}
-  EnemyFrontEnd: {fileID: 5325367486863842032}
---- !u!114 &5190699106355198910
+--- !u!114 &8141859487045342247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,6 +170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cf27a51cdcb51f44ac5c02278249d4c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2cf27a51cdcb51f44ac5c02278249d4c,
         type: 3}

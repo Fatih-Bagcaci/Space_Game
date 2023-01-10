@@ -5,36 +5,43 @@ using UnityEngine;
 public class RandomEnemySpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
-    //public GameObject[] enemyPrefabs;
+    public GameObject[] enemies;
+    private int enemySpawnCounter = 0;
+
+    /*[SerializeField]
+    private GameObject enemyPrefab;*/
 
     [SerializeField]
-    private GameObject enemyPrefab;
-
-    [SerializeField]
-    private float spawningInterval = 5f;
-
+    private float spawningInterval = 5;
 
     void Start()
     {
-        StartCoroutine(spawnEnemy(spawningInterval, enemyPrefab));
+        StartCoroutine(spawnEnemy(spawningInterval));
     }
 
-    // Update is called once per frame
-    void Update()
+    /*private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
-        /*if (Input.GetMouseButtonDown(0) & Time.timeScale != 0f) {
-            int randEnemy = Random.Range(0, enemyPrefabs.Length);
-            
-            Instantiate(enemyPrefabs[randEnemy], spawnPoints[randSpawnPoint].position, transform.rotation);
-        }*/
-    }
+        if (enemySpawnCounter < Random.Range(15,20)){
+            enemySpawnCounter += 1;
+            yield return new WaitForSeconds(interval);
+            int randSpawnPoint = Random.Range(0, spawnPoints.Length);
+            int enemySpawned = Random.Range(0, 1);
+            GameObject newEnemy = Instantiate(enemies[enemySpawned], spawnPoints[randSpawnPoint].position, transform.rotation);
+            StartCoroutine(spawnEnemy(interval, enemy));
+        }
+    }*/
 
-    private IEnumerator spawnEnemy(float interval, GameObject enemy)
+    private IEnumerator spawnEnemy(float interval)
     {
-        yield return new WaitForSeconds(interval);
-        int randSpawnPoint = Random.Range(0, spawnPoints.Length);
-        GameObject newEnemy = Instantiate(enemy, spawnPoints[randSpawnPoint].position, transform.rotation);
-        StartCoroutine(spawnEnemy(interval, enemy));
+        if (enemySpawnCounter < Random.Range(15, 20))
+        {
+            enemySpawnCounter += 1;
+            yield return new WaitForSeconds(interval);
+            int randSpawnPoint = Random.Range(0, spawnPoints.Length);
+            int enemySpawned = Random.Range(0, 2);
+            GameObject newEnemy = Instantiate(enemies[enemySpawned], spawnPoints[randSpawnPoint].position, transform.rotation);
+            StartCoroutine(spawnEnemy(interval));
+        }
     }
 
 }
