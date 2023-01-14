@@ -10,6 +10,14 @@ public class EnemyDestruction : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        if(transform.position.x < -34)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     private void OnCollisionEnter(Collision col)
     {

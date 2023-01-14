@@ -14,6 +14,7 @@ public class enemyAI : MonoBehaviour
     public Transform EnemyFrontEnd;
     private float shootingInterval;
     private float shootingTime = 5f;
+    private bool enemyDoNotShoot = false;
 
     Vector3 CurrentEuler;
 
@@ -22,11 +23,12 @@ public class enemyAI : MonoBehaviour
         //X movement for enemies
         if (transform.position.x > -27.75)
         {
-            enemyHorMovement = Random.Range(-0.1f, -1f);
+            enemyHorMovement = Random.Range(-1f, -2f);
         }
-        else if (transform.position.x < -27.75)
+        else if (transform.position.x < Random.Range(-25.75f, -27.75f))
         {
-            enemyHorMovement = 0;
+            enemyDoNotShoot = true;
+            enemyHorMovement = -5f;
         }
 
         //Y movement for enemies
@@ -58,7 +60,7 @@ public class enemyAI : MonoBehaviour
         {
             shootingTime -= Time.deltaTime;
         }
-        else if (shootingTime <= 0 && enemyShip != null)
+        else if (shootingTime <= 0 && enemyShip != null && !enemyDoNotShoot)
         {
             shootingInterval = Random.Range(2f, 6f);
             shootingTime = shootingInterval;
